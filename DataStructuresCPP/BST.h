@@ -14,12 +14,12 @@ public:
 		return root == nullptr;
 	}
 	//insert 
-	Output insert(T value) {
+	Output<T> insert(T value) {
 		string path;
 		path = "Root";
 		if (isEmpty()) {
 			root = new BSTNode<T>(value);
-			return Output(true, path);
+			return Output<T> (true, path, value);
 		}
 		auto ptr = root;
 		while (ptr->value != value) {
@@ -27,7 +27,7 @@ public:
 				if (ptr->right == nullptr) {
 					ptr->right = new BSTNode<T>(value);
 					path += "->Right";
-					return Output(true, path);
+					return Output<T> (true, path, value);
 				}
 				else {
 					ptr = ptr->right;
@@ -39,7 +39,7 @@ public:
 					if (ptr->left == nullptr) {
 						ptr->left = new BSTNode<T>(value);
 						path += "->Left";
-						return Output(true, path);
+						return Output<T> (true, path, value);
 					}
 					else {
 						ptr = ptr->left;
@@ -48,12 +48,12 @@ public:
 				}
 			}
 		}
-		return Output(false, path);
+		return Output<T> (false, path, value);
 	}
-	Output search(T value) {
+	Output<T> search(T value) {
 		string path = "Root";
 		if (isEmpty()) {
-			return Output(false, path);
+			return Output<T> (false, path, value);
 		}
 		else {
 			auto ptr = root;
@@ -67,10 +67,10 @@ public:
 					path += "->Left";
 				}
 				else {
-					return Output(true, path);
+					return Output<T> (true, path, value);
 				}
 			}
-			return Output(false, path);
+			return Output<T> (false, path, value);
 		}
 	}
 };
