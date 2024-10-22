@@ -3,13 +3,21 @@
 
 //SLLs don't have push back like we designed it
 #include "SingleLinkedList.h"
-#include "forward_list"
+#include "forward_list" //SLL standard lib
 
 #include "DoubleLinkedList.h"
+#include <list> //DDL standard lib
 
 #include "Stack.h"
 #include "Queue.h"
 #include "BST.h"
+//These use Hash table
+#include <unordered_set>
+#include <unordered_map>
+
+//These use BST
+#include <set>
+#include <map>
 
 //Display Stack
 template <typename T>
@@ -29,6 +37,9 @@ void displayQueue(Queue<T> que) {
     }
     cout << endl;
 }
+
+
+
 
 int main()
 {
@@ -107,8 +118,90 @@ int main()
     bst.insert(45).displayOutput();
     bst.insert(35).displayOutput();
     bst.insert(1).displayOutput();
-    cout << "search" << endl;
-    bst.search(1).displayOutput();
-    bst.search(155).displayOutput();
+    /*
+    
+                20
+        10              30
+    5       15                  45
+1                            35
+
+    DFS : 20 10 5 1 15 30 45 35
+    BFS : 20 10 30 5 15 45 1 35
+    */
+    //cout << "search" << endl;
+    //bst.search(1).displayOutput();
+    //bst.search(155).displayOutput();
+    bst.displayDFS();
+    bst.BFS();
+    BST<int> copiedBST = bst;
+    copiedBST.displayDFS();
+    copiedBST = bst;
+    copiedBST.BFS();
+    bst.erase(20).displayOutput();
+
+    cout << "================unordered_set===============" << endl;
+    //unordered set take unique values only so there is no duplication inside it
+    unordered_set<int> set;
+    cout << set.insert(1002).second << endl;
+    cout << set.insert(1005).second << endl;
+    cout << set.insert(1012).second << endl;
+    cout << set.insert(1027).second << endl;
+    cout << set.insert(1037).second << endl;
+    cout << set.insert(1049).second << endl;
+    cout << set.insert(1039).second << endl;
+    cout << set.insert(1039).second << endl;
+
+    cout << "================unordered_map===============" << endl;
+    //It consists of keys and values so values can be duplicated
+    // but the keys are unique
+    unordered_map<int, string> map;
+    cout << map.insert({1002, "A"}).second << endl;
+    cout << map.insert({1002, "A"}).second << endl; //Duplicate key so val won't be inserted
+    cout << map.insert({1003, "B"}).second << endl;
+    cout << map.insert({1004, "V"}).second << endl;
+    cout << map.insert({1005, "D"}).second << endl;
+    cout << map.insert({1006, "E"}).second << endl;
+    cout << map.insert({1007, "Q"}).second << endl;
+    cout << map.insert({1008, "A"}).second << endl;
+
+    /*
+    both unordered set and map return a pair first and second
+    first returns an iterator 
+    second returns whether the insert happened or not
+    */
+
+    cout << "================Graph===============" << endl;
+    /*
+    Let's Model a graph
+    */
+
+    /*
+    1       3
+    1       5
+    2       4
+    2       5
+    3       2
+    4       5
+    5       3
+    
+    */
+    cout << "Enter nodes and edges" << endl;
+    int nodes, edges;
+    cin >> nodes >> edges;
+    vector<vector<int>> graph(nodes + 1);
+    for (int i = 1; i <= edges; i++) {
+        int parent, child;
+        cin >> parent >> child;
+        graph[parent].push_back(child);
+    }
+
+    for (int i = 1; i <= nodes; i++) {
+        cout << "Parent: " << i << "--> ";
+        for (int j = 0; j < graph[i].size(); j++) {
+            cout << graph[i][j] << " ";
+        }
+        cout << endl;
+    }
+
 }
 
