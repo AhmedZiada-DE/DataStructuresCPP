@@ -11,4 +11,4 @@ This repository contains implementations of common data structures in C++, each 
 - **Binary Search Tree (BST)**
 - **Graph Model**
 
-Each structure is carefully implemented for ease of understanding and reusability. Simply import the desired header into your project and start building with these foundational data structures!
+Each structure is carefully implemented for ease of understanding and reusability. Simply import the desired header into your project and start building with these data structures!
