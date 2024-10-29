@@ -1,2 +1,14 @@
-This repo contains C++ codes as header files for vectors, single linked list, double linked list, queue, stack, Binary Search Tree and a modelling of a Graph.
-Each header is imported and used in the main file "DataStructuresCPP"
+# Data Structures in C++
+
+This repository contains implementations of common data structures in C++, each organized as a header file for modular use. The main file, **DataStructuresCPP**, imports and demonstrates the functionality of each structure.
+
+## Contents
+- **Vector**
+- **Singly Linked List**
+- **Doubly Linked List**
+- **Queue**
+- **Stack**
+- **Binary Search Tree (BST)**
+- **Graph Model**
+
+Each structure is carefully implemented for ease of understanding and reusability. Simply import the desired header into your project and start building with these foundational data structures!
